@@ -29,10 +29,10 @@ public class Poker {
 
         }
         System.out.println(Arrays.toString(allSet));
-        System.out.println("Gamer 1 set: " + gamerSets.sorting(allSet,0));
-        System.out.println("Gamer 2 set: " + gamerSets.sorting(allSet,1));
-        System.out.println("Gamer 3 set: " + gamerSets.sorting(allSet,2));
-        System.out.println("Gamer 4 set: " + gamerSets.sorting(allSet,3));
+        System.out.println("Gamer 1 set: " + gamerSets.sorting(allSet, 0));
+        System.out.println("Gamer 2 set: " + gamerSets.sorting(allSet, 1));
+        System.out.println("Gamer 3 set: " + gamerSets.sorting(allSet, 2));
+        System.out.println("Gamer 4 set: " + gamerSets.sorting(allSet, 3));
 
     }
 }
