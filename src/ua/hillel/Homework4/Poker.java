@@ -25,11 +25,11 @@ public class Poker {
                     j = 0;
                 }
             }
-            System.out.println();
             System.out.println("Player № " + k + " gets card: " + allSet[i]);
         }
         System.out.println();
         System.out.println(Arrays.toString(allSet));
+        System.out.println();
         System.out.println("Gamer 1 set: " + gamerSets.sorting(allSet, 0));
         System.out.println("Gamer 2 set: " + gamerSets.sorting(allSet, 1));
         System.out.println("Gamer 3 set: " + gamerSets.sorting(allSet, 2));
