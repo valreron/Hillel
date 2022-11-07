@@ -21,7 +21,8 @@ public class PlayPoker {
 
 
         for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
-            System.out.println("Input " + i);
+            int j = i;
+            System.out.println("Input " + ++j);
             String s = scanner.nextLine();
             gamersArray[i] = new Gamer(s);
         }
