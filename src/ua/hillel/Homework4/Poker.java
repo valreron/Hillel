@@ -11,7 +11,7 @@ public class Poker {
         Random random = new Random();
         String[] allSet = new String[20];
         GamerSets gamerSets = new GamerSets();
-        for (int i = 0, k = 1; i < 20; i++, k++) {
+          for (int i = 0, k = 1; i < 20; i++, k++) {
             allSet[i] = cardNum[random.nextInt(cardNum.length)] + " " + cardColor[random.nextInt(cardColor.length)];
             if (k == 5)
                 k = 1;
