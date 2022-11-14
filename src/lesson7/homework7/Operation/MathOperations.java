@@ -35,6 +35,13 @@ public class MathOperations extends ElementaryOperations {
         System.out.println(finalValue);
         return finalValue;
     }
+    public double othernessOperate(double firstValue, double finalValue) {
+        System.out.println("Input second value: ");
+        secondValue = scanner.nextDouble();
+        finalValue = Math.abs(firstValue / secondValue);
+        System.out.println(finalValue);
+        return finalValue;
+    }
 
     public void chooseOperation(String operationChoice, double firstValue, double FINAL_VALUE) {
         switch (operationChoice) {
