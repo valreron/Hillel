@@ -1,14 +1,15 @@
 package HomeworkLogger;
 
 public class Test {
+    private static final Logger LOGGER = Logger.getLogger(Test.class.getName());
 
     public static void main(String[] args) {
 
-        ColorLogger colorLogger = new ColorLogger();
+        LOGGER.log(LoggerLevel.WARN, "Eah BOY");
+        LOGGER.log(LoggerLevel.DEBUG, "I");
+        LOGGER.log(LoggerLevel.INFO, "DID");
+        LOGGER.log(LoggerLevel.ERROR, "IT!!!");
 
-        System.out.println(colorLogger.logInfo("try"));
-        System.out.println(colorLogger.logDebug("do"));
-        System.out.println(colorLogger.logWarn("it"));
-        System.out.println(colorLogger.logError("NOW!"));
+
     }
 }
