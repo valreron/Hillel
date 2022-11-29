@@ -27,7 +27,7 @@ public class Logger {
         }
     }
 
-    enum Color {
+    enum Color {            //color
         RESET("\u001B[0m"),
         BLACK("\u001B[30m"),
         RED("\u001B[31m"),
