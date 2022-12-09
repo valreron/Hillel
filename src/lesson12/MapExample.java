@@ -25,7 +25,7 @@ public class MapExample {
 //        for (Map.Entry<String, Integer> entry : map.entrySet()) {
 //            entry.getKey();
 //            entry.getValue();
-//
+
 //
 //        }
         User user = new User();
@@ -37,5 +37,6 @@ public class MapExample {
         user.setAge(25);
 
         System.out.println(userMap.get(user));
+
     }
 }
