@@ -11,25 +11,6 @@ public class Utils {
         System.out.println(driver.getTitle());//get suite Title
     }
 
-//    public void loginIn(WebDriver driver, WebElement userName,String inputName) {  //notEmpty login, zero pass
-//        //check fail password
-//        userName.click();
-//        userName.sendKeys(inputName);
-//        driver.findElement(By.cssSelector(".radius")).click();
-//        WebElement message = driver.findElement(By.xpath("//div[contains(text(),'Your password is invalid!')]"));
-//        System.out.println(message.getText());
-//    }
-//
-//    public void loginIn(WebElement userPass, WebDriver driver,String inputPass) {  //true pass, zero login
-//        //check fail password
-//        userPass.click();
-//        userPass.sendKeys(inputPass);
-//        driver.findElement(By.cssSelector(".radius")).click();
-//        WebElement message = driver.findElement(By.xpath("//div[contains(text(),'Your username is invalid!')]"));
-//        System.out.println(message.getText());
-//    }
-
-
     public void loginIn(WebDriver driver, WebElement userName, String inputName, WebElement userPass, String inputPass) {  //true pass, zero login
         String[] answer = {
                 "You logged into a secure area!",
