@@ -19,6 +19,6 @@ public class WebElementTest {
         driver.findElement(By.id("redirect")).click();
         List<WebElement> elementTestList = driver.findElements(By.cssSelector(".example li"));
         elementTestList.forEach(w -> System.out.println(w.getText()));
-        driver.quit();
+       // driver.quit();
     }
 }
