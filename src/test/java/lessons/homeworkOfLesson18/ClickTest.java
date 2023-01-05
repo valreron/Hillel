@@ -9,7 +9,7 @@ import java.util.List;
 public class ClickTest extends BaseTest {
     @Test
     public void webElementTest() {
-        utils.openSuite(driver, "https://the-internet.herokuapp.com/challenging_dom");
+        openSuite(driver, "https://the-internet.herokuapp.com/challenging_dom");
         List<WebElement> button = driver.findElements(By.cssSelector(".large-2.columns"));
         button.forEach(w -> {
             System.out.println(w.getText());
@@ -23,43 +23,39 @@ public class ClickTest extends BaseTest {
 
     @Test
     public void TrueLoginInputsTest() {
-        utils.openSuite(driver, "https://the-internet.herokuapp.com/login");
-        WebElement userName = driver.findElement(By.id("username"));
-        WebElement userPass = driver.findElement(By.id("password"));
-        utils.loginIn(driver, userName, "tomsmith", userPass, "SuperSecretPassword!");
+        openSuite(driver, "https://the-internet.herokuapp.com/login");
+        loginIn(driver, "tomsmith", "SuperSecretPassword!");
 
     }
 
     @Test
     public void onlyUserFalseNameLoginTest() {       //false login, Empty pass
-        utils.openSuite(driver, "https://the-internet.herokuapp.com/login");
-        WebElement userName = driver.findElement(By.id("username"));
-        WebElement userPass = driver.findElement(By.id("password"));
-        utils.loginIn(driver, userName, "tomsmith1", userPass, "");
+        openSuite(driver, "https://the-internet.herokuapp.com/login");
+        loginIn(driver, "tomsmith1", "");
 
     }
 
     @Test
     public void onlyLoginTrueNameLoginTest() {       //true login, Empty pass
-        utils.openSuite(driver, "https://the-internet.herokuapp.com/login");
+        openSuite(driver, "https://the-internet.herokuapp.com/login");
         WebElement userName = driver.findElement(By.id("username"));
         WebElement userPass = driver.findElement(By.id("password"));
-        utils.loginIn(driver, userName, "tomsmith", userPass, "");
+        loginIn(driver, "tomsmith", "");
 
     }
 
     @Test
     public void allEmptyLoginTest() {       //empty login, empty pass
-        utils.openSuite(driver, "https://the-internet.herokuapp.com/login");
+        openSuite(driver, "https://the-internet.herokuapp.com/login");
         WebElement userName = driver.findElement(By.id("username"));
         WebElement userPass = driver.findElement(By.id("password"));
-        utils.loginIn(driver, userName, "", userPass, "");
+        loginIn(driver, "", "");
 
     }
 
     @Test
     public void checkingCheckBoxTest() {
-        utils.openSuite(driver, "https://the-internet.herokuapp.com/checkboxes");
+        openSuite(driver, "https://the-internet.herokuapp.com/checkboxes");
         List<WebElement> checkBoxElement = driver.findElements(By.xpath("//input[@type='checkbox']"));
 
         System.out.println("check boxes:");
