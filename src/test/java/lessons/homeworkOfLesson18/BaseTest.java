@@ -10,7 +10,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
-    WebDriver driver = new ChromeDriver();
+    public WebDriver driver = new ChromeDriver();
 
     public void openSuite(WebDriver driver, String url) {
         driver.get(url);
