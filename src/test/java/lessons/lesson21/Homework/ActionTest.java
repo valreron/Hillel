@@ -46,11 +46,12 @@ public class ActionTest extends BaseTest {
         openSuite(driver, "https://the-internet.herokuapp.com/hovers");
 
         List<WebElement> users = driver.findElements(By.xpath("//div[@class='figure']"));
-        List<WebElement> nameUsers = driver.findElements(By.xpath("//div[@class='figcaption']/h5"));
+        List<WebElement> nameUsers;
         Actions actions = new Actions(driver);
 
         for (int i = 0; i < 3; i++) {
             actions.moveToElement(users.get(i)).perform();
+            nameUsers = driver.findElements(By.xpath("//div[@class='figcaption']/h5"));
             Assert.assertTrue(nameUsers.get(i).isDisplayed());
             System.out.println(nameUsers.get(i).getText());
 
