@@ -1,60 +1,33 @@
 package lessons.homeworkOfLesson18;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import pages.MainPage;
 
 public class BaseTest {
-    public WebDriver driver = new ChromeDriver();
+    protected WebDriver driver;
 
-    public void openSuite(WebDriver driver, String url) {
-        driver.get(url);
-        System.out.println(driver.getTitle());//get suite Title
-    }
 
-    public void loginIn(WebDriver driver, String inputName, String inputPass) {  //true pass, zero login
-        WebElement userName = driver.findElement(By.id("username"));
-        WebElement userPass = driver.findElement(By.id("password"));
-        String[] answer = {
-                "You logged into a secure area!",
-                "Your username is invalid!",
-                "Your password is invalid!"
-        };
-        boolean result = false;
-
-        //input login
-        userName.click();
-        userName.sendKeys(inputName);
-        //input pass
-        userPass.click();
-        userPass.sendKeys(inputPass);
-        driver.findElement(By.cssSelector(".radius")).click();
-        WebElement message = driver.findElement(By.id("flash-messages"));
-        System.out.println(message.getText());
-        for (String s : answer) {
-            if (message.getText().contains(s)) {
-                System.out.println(s);
-                result = true;
-                break;
-            }
-        }
-        Assert.assertTrue(result);
-    }
-
-    @BeforeTest(alwaysRun = true)
-    public void startTest() {
+    @BeforeClass
+    public void setUp(){
         WebDriverManager.chromedriver().setup();
+        this.driver = new ChromeDriver();
 
+        driver.manage().window().maximize();
     }
 
-    @AfterTest(alwaysRun = true)
-    public void endTest() {
-        driver.quit();
+    @AfterClass(alwaysRun = true)
+    public void tearDown(){
+        if(driver != null){
+            driver.quit();
+        }
     }
 
+    public MainPage openMainPage(){
+        driver.get("https://the-internet.herokuapp.com/");
+        return new MainPage(driver);
+    }
 }

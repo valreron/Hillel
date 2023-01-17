@@ -1,73 +1,70 @@
 package lessons.homeworkOfLesson18;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
+import pages.CheckBoxPage;
+import pages.DomPage;
+import pages.SecurePage;
 
 public class ClickTest extends BaseTest {
     @Test
-    public void webElementTest() {
-        openSuite(driver, "https://the-internet.herokuapp.com/challenging_dom");
-        List<WebElement> button = driver.findElements(By.cssSelector(".large-2.columns"));
-        button.forEach(w -> {
-            System.out.println(w.getText());
-            w.click();
-        });
-        List<WebElement> table4Element = driver.findElements(By.xpath("//*[@class='large-10 columns']/table/tbody/tr/td[4]"));
-        System.out.println("Table elements: ");
-        table4Element.forEach(element -> System.out.println(element.getText()));
-
+    public void domElementTest() {
+        DomPage domPage = openMainPage()
+                .goToDomPage()
+                .clickButtons();
+        domPage.findTableElements();
     }
 
     @Test
     public void TrueLoginInputsTest() {
-        openSuite(driver, "https://the-internet.herokuapp.com/login");
-        loginIn(driver, "tomsmith", "SuperSecretPassword!");
+        SecurePage securePage = openMainPage()
+                .goToLoginPage()
+                .setUsername("tomsmith")
+                .setPassword("SuperSecretPassword!")
+                .clickLoginButton();
 
+        String text = securePage.getPageName();
+        Assert.assertTrue(text.contains("Secure Area"));
+        Assert.assertTrue(securePage.checkPopUp());
     }
 
     @Test
-    public void onlyUserFalseNameLoginTest() {       //false login, Empty pass
-        openSuite(driver, "https://the-internet.herokuapp.com/login");
-        loginIn(driver, "tomsmith1", "");
+    public void onlyUserFalseNameLoginTest() {
+        SecurePage securePage = openMainPage()
+                .goToLoginPage()
+                .loginWithInvalidCreds("tomsmith1", "");
 
+        String text = securePage.getPageName();
+        Assert.assertFalse(text.contains("Secure Area"));
+        Assert.assertTrue(securePage.checkPopUp());
     }
 
     @Test
-    public void onlyLoginTrueNameLoginTest() {       //true login, Empty pass
-        openSuite(driver, "https://the-internet.herokuapp.com/login");
-        WebElement userName = driver.findElement(By.id("username"));
-        WebElement userPass = driver.findElement(By.id("password"));
-        loginIn(driver, "tomsmith", "");
+    public void onlyLoginTrueNameLoginTest() {
+        SecurePage securePage = openMainPage()
+                .goToLoginPage()
+                .loginWithInvalidCreds("tomsmith", "");
 
+        String text = securePage.getPageName();
+        Assert.assertFalse(text.contains("Secure Area"));
+        Assert.assertTrue(securePage.checkPopUp());
     }
 
     @Test
-    public void allEmptyLoginTest() {       //empty login, empty pass
-        openSuite(driver, "https://the-internet.herokuapp.com/login");
-        WebElement userName = driver.findElement(By.id("username"));
-        WebElement userPass = driver.findElement(By.id("password"));
-        loginIn(driver, "", "");
+    public void allEmptyLoginTest() {
+        SecurePage securePage = openMainPage()
+                .goToLoginPage()
+                .loginWithInvalidCreds("", "");
 
+        String text = securePage.getPageName();
+        Assert.assertFalse(text.contains("Secure Area"));
+        Assert.assertTrue(securePage.checkPopUp());
     }
 
     @Test
-    public void checkingCheckBoxTest() {
-        openSuite(driver, "https://the-internet.herokuapp.com/checkboxes");
-        List<WebElement> checkBoxElement = driver.findElements(By.xpath("//input[@type='checkbox']"));
-
-        System.out.println("check boxes:");
-
-        checkBoxElement.forEach(w -> {
-            if (!w.isSelected()) {
-                System.out.println("Unchecked");
-                w.click();
-            } else {
-                System.out.println("Checked");
-            }
-        });
+    public void checkCheckBoxTest() {
+        CheckBoxPage checkBoxPage = openMainPage().goToCheckBoxPage();
+        checkBoxPage.checkCheckBox();
     }
 
 }

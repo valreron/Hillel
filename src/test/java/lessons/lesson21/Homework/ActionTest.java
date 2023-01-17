@@ -6,14 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
+import pages.HoverPage;
 
 public class ActionTest extends BaseTest {
     @Test
     public void dragAndDropTest() {
-        openSuite(driver, "https://crossbrowsertesting.github.io/drag-and-drop.html");
-
+        driver.get("https://crossbrowsertesting.github.io/drag-and-drop.html");
         WebElement from = driver.findElement(By.xpath("//*[@id='draggable']"));
         WebElement to = driver.findElement(By.xpath("//*[@id='droppable']"));
 
@@ -25,7 +23,7 @@ public class ActionTest extends BaseTest {
 
     @Test
     public void dropDownTest() {
-        openSuite(driver, "https://crossbrowsertesting.github.io/hover-menu.html");
+        driver.get("https://crossbrowsertesting.github.io/hover-menu.html");
         driver.findElement(By.xpath("//*[contains (text(), 'Dropdown ' ) ]")).click();
 
         WebElement link = driver.findElement(By.xpath("//*[contains (text(), 'Secondary Menu' ) ]"));
@@ -43,18 +41,7 @@ public class ActionTest extends BaseTest {
 
     @Test
     public void checkUserTest() {
-        openSuite(driver, "https://the-internet.herokuapp.com/hovers");
-
-        List<WebElement> users = driver.findElements(By.xpath("//div[@class='figure']"));
-        List<WebElement> nameUsers;
-        Actions actions = new Actions(driver);
-
-        for (int i = 0; i < 3; i++) {
-            actions.moveToElement(users.get(i)).perform();
-            nameUsers = driver.findElements(By.xpath("//div[@class='figcaption']/h5"));
-            Assert.assertTrue(nameUsers.get(i).isDisplayed());
-            System.out.println(nameUsers.get(i).getText());
-
-        }
+        HoverPage hoverPage = openMainPage().goToHoverPage();
+        hoverPage.checkUserName();
     }
 }
