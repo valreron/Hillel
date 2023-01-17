@@ -1,24 +1,15 @@
 package lessons.lesson17;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import lessons.homeworkOfLesson18.BaseTest;
 import org.testng.annotations.Test;
+import pages.RedirectPage;
 
-import java.util.List;
-
-public class WebElementTest {
+public class WebElementTest extends BaseTest {
     @Test
-    public void webElementTest(){
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/");
-        driver.findElement(By.linkText("Redirect Link")).click();
-        driver.findElement(By.id("redirect")).click();
-        List<WebElement> elementTestList = driver.findElements(By.cssSelector(".example li"));
-        elementTestList.forEach(w -> System.out.println(w.getText()));
-       // driver.quit();
+    public void webElementTest() {
+        RedirectPage redirectPage = openMainPage()
+                .goToRedirectPage()
+                .openStatusCodes();
+        redirectPage.showCodes();
     }
 }
