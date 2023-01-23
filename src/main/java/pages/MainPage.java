@@ -34,7 +34,7 @@ public class MainPage extends BasePage {
 
     public LoginPage goToLoginPage() {
         clickButton(formAuthLink);
-        return new LoginPage(driver);
+        return new LoginPage();
     }
 
     public DomPage goToDomPage() {

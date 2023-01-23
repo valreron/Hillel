@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,14 +14,13 @@ public class SecurePage extends BasePage {
     @FindBy(id = "flash-messages")
     private WebElement resultMessage;
 
-    public SecurePage(WebDriver driver) {
-        super(driver);
+    public SecurePage() {
         PageFactory.initElements(driver,this);
     }
 
     public LoginPage logout() {
         logoutButton.click();
-        return new LoginPage(driver);
+        return new LoginPage();
     }
 
     public String getPageName() {
