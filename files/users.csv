@@ -1,0 +1,4 @@
+username,password,group
+user,userPass,users
+admin,adminPass,admins
+guest,guestPass,guests
