@@ -8,7 +8,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import pages.MainPage;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,10 +21,10 @@ public class BaseTest {
 
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("download.default_directory", new File("target/downloads/").getAbsolutePath());
+        prefs.put("download.default_directory", "/Users/valerijmokrinskij/Documents/");
         options.setExperimentalOption("prefs", prefs);
 
-        this.driver = new ChromeDriver();
+        this.driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
     }
