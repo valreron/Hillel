@@ -13,7 +13,8 @@ import java.util.Map;
 
 public class BaseTest {
     protected WebDriver driver;
-
+    protected static String filePath = "/Users/valerijmokrinskij/Documents/";
+    protected static String fileName = "LambdaTest.txt";
 
     @BeforeClass
     public void setUp() {
@@ -21,7 +22,7 @@ public class BaseTest {
 
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("download.default_directory", "/Users/valerijmokrinskij/Documents/");
+        prefs.put("download.default_directory", filePath);
         options.setExperimentalOption("prefs", prefs);
 
         this.driver = new ChromeDriver(options);
