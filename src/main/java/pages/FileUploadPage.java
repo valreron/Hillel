@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
+
 public class FileUploadPage extends BasePage {
 
     @FindBy(css = "input[id*='file-upload']")
@@ -22,7 +24,7 @@ public class FileUploadPage extends BasePage {
     }
 
     public FileUploadPage uploadingFile(String filePath) {
-        chooseFile.sendKeys(filePath);
+        chooseFile.sendKeys(new File(filePath).getAbsolutePath());
         uploadButton.click();
         return this;
     }

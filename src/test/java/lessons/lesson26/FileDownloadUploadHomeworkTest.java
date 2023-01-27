@@ -6,10 +6,12 @@ import org.testng.annotations.Test;
 import pages.FileDownloaderPage;
 import pages.FileUploadPage;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileDownloadUploadHomeworkTest extends BaseTest {
     @Test
@@ -19,26 +21,32 @@ public class FileDownloadUploadHomeworkTest extends BaseTest {
         fileDownload.downloadingFile();
 
         boolean fileIsThere = false;
+        File dir;
         while (!fileIsThere) {
-            File dir = new File(filePath);
+            dir = new File(filePath).getAbsoluteFile();
             File[] dirContents = dir.listFiles();
             assert dirContents != null;
             for (File dirContent : dirContents) {
                 if (dirContent.getName().equals(fileName)) {
-                    System.out.println("Text if founded");
+                    System.out.println("File if founded");
                     fileIsThere = true;
                     break;
                 }
             }
         }
 
-        FileWriter FW = new FileWriter(filePath + fileName, true);//add info to file
-        BufferedWriter BW = new BufferedWriter(FW);
-        BW.newLine();
-        BW.append("This Is First Line.");
-        BW.newLine();
-        BW.append("This Is Second Line.");
-        BW.close();
+        File file = new File(filePath + fileName);
+
+        List<String> lines = Files.readAllLines(file.toPath());
+        System.out.println(lines);
+
+        lines = new ArrayList<>();
+        lines.add("test line 1\s");
+        lines.add("test line 2\s");
+        lines.add("test line 3\s");
+
+        Files.write(file.toPath(), lines, StandardOpenOption.APPEND);
+        System.out.println(lines);
 
     }
 
