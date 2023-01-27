@@ -13,6 +13,7 @@ public class FileDownloadTest extends BaseTest {
         driver.findElement(By.linkText("myfile.txt")).click();
         System.out.println("done");
 
+
         driver.get("https://the-internet.herokuapp.com/upload");
 //        driver.findElement(By.cssSelector("#file-upload"))
 //                .sendKeys(new File(("/target/test2.txt")).getAbsolutePath());
