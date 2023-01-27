@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,8 +14,7 @@ public class LoginPage extends BasePage {
     @FindBy(css = ".radius")
     private WebElement loginButton;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage() {
         PageFactory.initElements(driver,this);
     }
 
@@ -32,7 +30,7 @@ public class LoginPage extends BasePage {
 
     public SecurePage clickLoginButton() {
         clickButton(loginButton);
-        return new SecurePage(driver);
+        return new SecurePage();
     }
 
     public SecurePage login(String username, String password) {
@@ -45,6 +43,6 @@ public class LoginPage extends BasePage {
         setUsername(username);
         setPassword(password);
         clickLoginButton();
-        return new SecurePage(driver);
+        return new SecurePage();
     }
 }

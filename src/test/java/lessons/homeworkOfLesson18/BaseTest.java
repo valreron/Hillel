@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import pages.MainPage;
+import utils.DriverHolder;
 
 import java.io.File;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class BaseTest {
         this.driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
+        DriverHolder.setDriver(driver);
     }
 
     @AfterClass(alwaysRun = true)
