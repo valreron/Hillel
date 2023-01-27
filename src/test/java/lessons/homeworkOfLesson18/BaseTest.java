@@ -8,20 +8,21 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import pages.MainPage;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 public class BaseTest {
     protected WebDriver driver;
-
-
+    protected static String fileName = "LambdaTest.txt";
+    protected static String filePath = "files/downloads/";
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("download.default_directory", "/Users/valerijmokrinskij/Documents/");
+        prefs.put("download.default_directory", new File(filePath).getAbsolutePath());
         options.setExperimentalOption("prefs", prefs);
 
         this.driver = new ChromeDriver(options);

@@ -27,6 +27,12 @@ public class MainPage extends BasePage {
     @FindBy(linkText = "Dropdown")
     private  WebElement dropdown;
 
+    @FindBy(linkText = "File Download")
+    private WebElement fileDownload;
+
+    @FindBy(linkText = "File Upload")
+    private WebElement fileUpload;
+
     public MainPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
@@ -65,5 +71,15 @@ public class MainPage extends BasePage {
     public DropDownPage goToDropDownPage(){
         clickButton(dropdown);
         return new DropDownPage(driver);
+    }
+
+    public FileDownloaderPage goToDownloadPage(){
+        clickButton(fileDownload);
+        return new FileDownloaderPage(driver);
+    }
+
+    public FileUploadPage goToUploadPage(){
+        clickButton(fileUpload);
+        return new FileUploadPage(driver);
     }
 }
