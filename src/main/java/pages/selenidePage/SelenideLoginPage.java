@@ -2,15 +2,13 @@ package pages.selenidePage;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.checkerframework.checker.units.qual.C;
-import pages.SecurePage;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class SelenideLoginPage {
-    private SelenideElement usernameInput = $("#username");
-    private SelenideElement passwordInput = $("#username");
-    private SelenideElement loginButton = $("button[type='submit']");
+    private final SelenideElement usernameInput = $("#username");
+    private final SelenideElement passwordInput = $("#username");
+    private final SelenideElement loginButton = $("button[type='submit']");
 
     public SelenideLoginPage setUsername(String name){
         usernameInput.shouldBe(Condition.visible).sendKeys(name);

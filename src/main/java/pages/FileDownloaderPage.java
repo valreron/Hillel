@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class FileDownloaderPage extends BasePage {
-
     @FindBy(linkText = "LambdaTest.txt")
     private WebElement myfileTxt;
 

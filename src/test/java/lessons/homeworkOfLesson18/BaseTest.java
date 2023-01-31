@@ -16,7 +16,7 @@ import java.util.Map;
 public class BaseTest {
     protected WebDriver driver;
     protected static String fileName = "LambdaTest.txt";
-    protected static String filePath = "files/downloads/";
+    protected static String filePath = "target/downloads/";
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
