@@ -3,28 +3,34 @@
 <suite name="Suite1" verbose="1">
 
     <test name="Test 1">
-        <groups>
-            <run>
-                <include name="login"/>
-                <include name="out"/>
-                <include name="depend"/>
-            </run>
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="login"/>-->
+<!--                <include name="out"/>-->
+<!--                <include name="depend"/>-->
+<!--            </run>-->
 
-        </groups>
+<!--        </groups>-->
 
 
-        <packages>
-            <package name="lessons.lessonTestNg.Homework"/>
-        </packages>
+<!--        <packages>-->
+<!--            <package name="lessons.lessonTestNg.Homework"/>-->
+<!--        </packages>-->
 
-    </test>
-    <test name="Test 3">
-        <parameter name="info" value="lol"/>
-        <parameter name="info1" value="kek"/>
-        <parameter name="info2" value="cheburek"/>
+<!--    </test>-->
+<!--    <test name="Test 3">-->
+<!--        <parameter name="info" value="lol"/>-->
+<!--        <parameter name="info1" value="kek"/>-->
+<!--        <parameter name="info2" value="cheburek"/>-->
 
+<!--        <classes>-->
+<!--            <class name="lessons.lessonTestNg.Homework.OutputTest"/>-->
+<!--        </classes>-->
+<!--        <packages>-->
+<!--            <package name="lessons.restTests.StoreRestTest"></package>-->
+<!--        </packages>-->
         <classes>
-            <class name="lessons.lessonTestNg.Homework.OutputTest"/>
+            <class name="lessons.restTests.StoreRestTest"/>
         </classes>
     </test>
 </suite>
