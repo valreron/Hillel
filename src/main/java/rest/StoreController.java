@@ -11,7 +11,7 @@ public class StoreController {
     private OkHttpClient okHttpClient;
     private Response response;
 
-    public void findInventory() throws IOException {
+    public int findInventory() throws IOException {
         request = new Request.Builder()
                 .get()
                 .url("https://petstore3.swagger.io/api/v3/store/inventory")
@@ -20,7 +20,8 @@ public class StoreController {
         response = okHttpClient.newCall(request).execute();
         System.out.println("Status code: " + response.code());
         assert response.body() != null;
-        System.out.println("Body: " + response.body().string());
+       // System.out.println("Body: " + response.body().string());
+        return response.code();
     }
 
     public Boolean findPurchaseById(int id) throws IOException {

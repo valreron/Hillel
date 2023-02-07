@@ -11,7 +11,7 @@ public class StoreRestTest {
     StoreController storeController = new StoreController();
     @Test(priority = 1)
     public void storeGetTest() throws IOException {
-        storeController.findInventory();
+        Assert.assertEquals(storeController.findInventory(),500);
     }
 
     @Test(priority = 3)
