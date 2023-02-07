@@ -20,7 +20,7 @@ public class StoreController {
         response = okHttpClient.newCall(request).execute();
         System.out.println("Status code: " + response.code());
         assert response.body() != null;
-       // System.out.println("Body: " + response.body().string());
+        System.out.println("Body: " + response.body().string());
         return response.code();
     }
 
