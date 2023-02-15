@@ -1,11 +1,13 @@
 package lessons.homeworkOfLesson18;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lessons.listeners.CustomerExtentReportListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import pages.MainPage;
 import utils.DriverHolder;
 
@@ -13,10 +15,17 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+@Listeners(CustomerExtentReportListener.class)
 public class BaseTest {
+    static {
+        System.setProperty("extent.reporter.html.start", "true");
+        System.setProperty("extent.reporter.html.out", "target/extentReport/ExtentHTML.html");
+    }
+
     protected WebDriver driver;
     protected static String fileName = "LambdaTest.txt";
     protected static String filePath = "target/downloads/";
+
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();

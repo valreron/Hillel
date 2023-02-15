@@ -9,6 +9,10 @@ import java.io.File;
 import static com.codeborne.selenide.Selenide.open;
 
 public class SelenideBaseTest {
+    static{
+        System.setProperty("extent.reporter.html.start","true");
+        System.setProperty("extent.reporter.html.out","target/extentReport/ExtentHTML.html");
+    }
     protected static String fileName = "LambdaTest.txt";
     protected static String filePath = "target/downloads/";
 
