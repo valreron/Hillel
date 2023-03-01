@@ -30,7 +30,8 @@
 <!--            <package name="lessons.restTests.StoreRestTest"></package>-->
 <!--        </packages>-->
         <classes>
-            <class name="lessons.restTests.StoreRestTest"/>
+<!--            <class name="lessons.restTests.StoreRestTest"/>-->
+            <class name="lessons.homeworkOfLesson18.ClickTest"/>
         </classes>
     </test>
 </suite>
